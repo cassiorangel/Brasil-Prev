@@ -28,6 +28,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -123,6 +124,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "brasilprev"
+    }
+  },
+  "defaultProject": "brasilprev",
+  "cli": {
+    "analytics": "77054339-0936-41d9-bcbf-348e2077f996"
+  }
 }
