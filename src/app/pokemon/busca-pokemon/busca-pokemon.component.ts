@@ -34,7 +34,10 @@ export class BuscaPokemonComponent implements OnInit {
     this.pokemonSevice.searchPokemon(this.profileForm.value.busca)
     .subscribe(res=> {
       this.listResultBusca = res['cards']
-      console.log(this.listResultBusca)
+      if(!res['cards'] || res['cards'].length === 0) {
+        return alert('Não foram encontrado resultados para sua busca')
+      }
+      return console.log(this.listResultBusca)
     }, 
       error => console.log(error)
     );
