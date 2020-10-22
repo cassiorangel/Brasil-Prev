@@ -15,6 +15,8 @@ export class ListaPokemonComponent implements OnInit {
 
   listPokemon: any[];
 
+  public dadosModal: Subscription;
+
   public listaIncricao: Subscription;
 
   constructor(
@@ -43,32 +45,32 @@ export class ListaPokemonComponent implements OnInit {
   }
 
   detalhe(id) {
-   this.listDetalhe(id);
+    this.listDetalhe(id);
   }
 
   listDetalhe(id) {
-    this.pokemonService.detalhePokemon(id)
+    this.dadosModal = this.pokemonService.detalhePokemon(id)
       .subscribe(res => {
-        console.log(res)
-        this.bsModalRef = this.modalService.show(ModalDetalheComponent,  { class: 'gray modal-lg' });
-        res['cards'].map(res => {
-          this.bsModalRef.content.name = res['name']
-          this.bsModalRef.content.closeBtnName = 'Fechar';
-          this.bsModalRef.content.imagem = res['imageUrlHiRes']; 
-          this.bsModalRef.content.id = res['id']; 
-          this.bsModalRef.content.resistances = res['resistances']; 
-          this.bsModalRef.content.weaknesses = res['weaknesses']; 
-          this.bsModalRef.content.attacks = res['attacks'];
-          
-          
-          
-        });
-        console.log(res['cards'])
-       }, error => console.log(error));
+        this.bsModalRef = this.modalService.show(ModalDetalheComponent, { class: 'gray modal-lg' });
+        this.trataObjetoModal(res['cards']);
+      }, error => console.log(error));
+  }
+
+  trataObjetoModal(objArray) {
+    return objArray.map(res => {
+      this.bsModalRef.content.name = res['name']
+      this.bsModalRef.content.closeBtnName = 'Fechar';
+      this.bsModalRef.content.imagem = res['imageUrlHiRes'];
+      this.bsModalRef.content.id = res['id'];
+      this.bsModalRef.content.resistances = res['resistances'];
+      this.bsModalRef.content.weaknesses = res['weaknesses'];
+      this.bsModalRef.content.attacks = res['attacks'];
+    });
   }
 
   ngOnDestroy(): void {
     this.listaIncricao.unsubscribe();
+    this.dadosModal.unsubscribe();
   }
 
 }
