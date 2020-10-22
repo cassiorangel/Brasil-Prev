@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  API: 'https://api.pokemontcg.io/v1/cards?'
+  API: 'https://api.pokemontcg.io/v1/cards'
 };
 
 /*
