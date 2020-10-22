@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PokemonService } from '../pokemon.service';
 import { Subscription } from 'rxjs';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { ModalDetalheComponent } from 'src/app/shared/modal-detalhe/modal-detalhe.component';
 
 @Component({
   selector: 'app-lista-pokemon',
@@ -9,12 +11,15 @@ import { Subscription } from 'rxjs';
 })
 export class ListaPokemonComponent implements OnInit {
 
+  bsModalRef: BsModalRef;
+
   listPokemon: any[];
 
   public listaIncricao: Subscription;
 
   constructor(
-    private pokemonService: PokemonService
+    private pokemonService: PokemonService,
+    private modalService: BsModalService
   ) { }
 
   ngOnInit(): void {
@@ -35,6 +40,25 @@ export class ListaPokemonComponent implements OnInit {
     return dadosArray.sort((a, b) => {
       return a.name < b.name ? -1 : a.name > b.name ? 1 : 0;
     });
+  }
+
+  detalhe(id) {
+    
+   this.listDetalhe(id);
+  }
+
+  listDetalhe(id) {
+    this.pokemonService.detalhePokemon(id)
+      .subscribe(res => {
+        this.bsModalRef = this.modalService.show(ModalDetalheComponent);
+        res['cards'].map(res => {
+          this.bsModalRef.content.title = res['name']
+          this.bsModalRef.content.closeBtnName = 'Fechar';
+          this.bsModalRef.content.imagem = res['imageUrlHiRes']; 
+          
+        });
+        console.log(res['cards'])
+       }, error => console.log(error));
   }
 
   ngOnDestroy(): void {

@@ -4,10 +4,12 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ModalDetalheComponent } from './shared/modal-detalhe/modal-detalhe.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ModalDetalheComponent
   ],
   imports: [
     BrowserModule,

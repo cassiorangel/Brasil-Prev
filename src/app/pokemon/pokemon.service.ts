@@ -10,6 +10,9 @@ export class PokemonService {
   private readonly API = `${environment.API}`;
 
   private readonly API_BUSCA = `${environment.API}?name=`;
+
+  private readonly API_DETALHE = `${environment.API}?id=`;
+
   constructor(
     private http: HttpClient
   ) { }
@@ -21,4 +24,9 @@ export class PokemonService {
   searchPokemon(name) {
     return this.http.get(this.API_BUSCA + name)
   }
+
+  detalhePokemon(id) {
+    return this.http.get(this.API_DETALHE + id)
+  }
+
 }
