@@ -5,11 +5,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ModalDetalheComponent } from './shared/modal-detalhe/modal-detalhe.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ModalDetalheComponent
+    ModalDetalheComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
