@@ -7,6 +7,10 @@
       <div class="form-group col-md-8">
 
         <input type="text" formControlName="busca" class="form-control" placeholder="Nome do Pokemon">
+        <span *ngIf="!busca.pristine && busca.errors">
+          <span *ngIf="busca.errors.required" class="cor"> 
+          Informe nome do Pokemon</span>
+        </span>
       </div>
       <div class="form-group col-md-4">
         <button type="submit" class="btn btn-primary bt" [disabled]="!profileForm.valid">Busca</button>
@@ -15,16 +19,16 @@
   </div>
 </div>
 
-<div class="titulo" *ngIf="listResultBusca">Lista de Pokemon</div>
+<div class="titulo" *ngIf="listResultBusca">Dados Pokemon</div>
 <div class="row" style="margin-bottom: 20px;">
   <div class="col-sm-4 topo" *ngFor="let pokemon of listResultBusca">
     <div class="card" style="width: 100%; min-height: 300px;">
       <span>
         <img
-          class="card-img-top img-fluid"
+          class="card-img-top img-fluid dados-img"
           src="{{ pokemon.imageUrl }}"
           alt=""
-          style="width: 230px;height: 300px;margin: 0 auto;display: block;padding-top: 10px;"
+          
         />
       </span>
       <div class="card-body">
@@ -39,7 +43,6 @@
               <span class="linha">Tipo:</span> {{ pokemon.types }}
             </span>
         </div>
-        <button class="btn btn-primary btn-sm bt">Detalhes</button>
       </div>
     </div>
   </div>

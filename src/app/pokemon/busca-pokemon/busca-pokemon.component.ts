@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PokemonService } from '../pokemon.service';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -15,9 +15,13 @@ export class BuscaPokemonComponent implements OnInit {
   public listResultBusca: any[];
 
   profileForm = this.fb.group({
-    busca: [null],
+    busca: [null, Validators.required],
 
   });
+
+  get busca() {
+    return this.profileForm.get('busca');
+  }
 
   constructor(
     private pokemonSevice: PokemonService,
