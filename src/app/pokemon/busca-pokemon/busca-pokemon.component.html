@@ -1,19 +1,47 @@
 <div class="card topo">
-    <div class="card-header letra-titulo">
-      Busca Pokemon
-    </div>
-    <div class="card-body">
-        <form class="form-row" style="margin-top: 12px;" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
-            <div class="form-group col-md-8">
-           
-              <input type="text" 
-                formControlName="busca"
-                class="form-control" placeholder="Nome do Pokemon">
-            </div>
-            <div class="form-group col-md-4">
-                <button type="submit" class="btn btn-primary bt" [disabled]="!profileForm.valid">Busca</button>
-            </div>
-          </form>
+  <div class="card-header letra-titulo">
+    Busca Pokemon
+  </div>
+  <div class="card-body">
+    <form class="form-row" style="margin-top: 12px;" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+      <div class="form-group col-md-8">
 
+        <input type="text" formControlName="busca" class="form-control" placeholder="Nome do Pokemon">
+      </div>
+      <div class="form-group col-md-4">
+        <button type="submit" class="btn btn-primary bt" [disabled]="!profileForm.valid">Busca</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="titulo" *ngIf="listResultBusca">Lista de Pokemon</div>
+<div class="row" style="margin-bottom: 20px;">
+  <div class="col-sm-4 topo" *ngFor="let pokemon of listResultBusca">
+    <div class="card" style="width: 100%; min-height: 300px;">
+      <span>
+        <img
+          class="card-img-top img-fluid"
+          src="{{ pokemon.imageUrl }}"
+          alt=""
+          style="width: 230px;height: 300px;margin: 0 auto;display: block;padding-top: 10px;"
+        />
+      </span>
+      <div class="card-body">
+        <div class="card-d">
+            <span class="card-text"><span class="linha">Nome: </span>{{ pokemon.name }}</span>
+
+            <span class="card-text">
+              <span class="linha">Id:</span> {{ pokemon.id }}
+            </span>
+  
+            <span class="card-text">
+              <span class="linha">Tipo:</span> {{ pokemon.types }}
+            </span>
+        </div>
+        <button class="btn btn-primary btn-sm bt">Detalhes</button>
+      </div>
     </div>
   </div>
+</div>
+
