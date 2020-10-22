@@ -7,39 +7,41 @@
 <div class="modal-body">
     <div class="row">
         <div class="col-sm-6">
-            <img class="card-img-top" src="{{ imagem }}" alt="" style="
-        width: 80%;
-        
-        padding-bottom: 18px;
-        margin: 0 auto;
-        display: block;
-        padding-top: 10px;
-      " />
+            <img class="card-img-top img-carta" src="{{ imagem }}" alt="" />
         </div>
 
         <div class="col-sm-6">
-            <span class="title"><span class="li-title">Nome: </span>{{ name }}</span>
-            <span class="title"><span class="li-title">Id: </span>{{ id }}</span>
 
+            <div class="info">Informações</div>
+            <span class="title title-ajuste"><span class="li-title">Nome: </span>{{ name }} <span
+                    style="padding-right: 20px;padding-left: 20px;">|</span> <span class="li-title">Id:
+                </span>{{ id }}</span>
+            <!--
+            <span class="title"><span class="li-title">Id: </span>{{ id }}</span>
+-->
 
             <span class="titulo-lista">Resistência</span>
             <ul class="ul-estilo" *ngFor="let item of resistances">
-                <li><span class="li-title">Tipo:</span> {{ item.type }}<span class="li-title"> Valor:</span>
+                <li><span class="li-title">Tipo:</span> {{ item.type }} <span
+                        style="padding-right: 20px;padding-left: 20px;">|</span> <span class="li-title"> Valor:</span>
                     {{ item.value }}</li>
             </ul>
 
             <span class="titulo-lista">Fraqueza</span>
             <ul class="ul-estilo" *ngFor="let fraqueza of weaknesses">
-                <li><span class="li-title">Tipo:</span> {{ fraqueza.type }} <span class="li-title">Valor:</span>
+                <li><span class="li-title">Tipo:</span> {{ fraqueza.type }} <span
+                        style="padding-right: 20px;padding-left: 20px;">|</span> <span class="li-title">Valor:</span>
                     {{ fraqueza.value }}</li>
             </ul>
 
-            <span class="titulo-lista">Ataque</span>
+            <span class="titulo-lista topo-desc">Ataque</span>
             <ul class="ul-estilo" *ngFor="let ataque of attacks">
-                <li><span class="li-title">Nome ataque:</span> {{ ataque.name }} <span
+                <li class="topo-desc"><span class="li-title">Nome ataque:</span> {{ ataque.name }} <span
+                        style="padding-right: 20px;padding-left: 20px;">|</span> <span
                         class="li-title">Dano:</span>{{ ataque.damage }} </li>
-                <li><span class="li-title">Descrição:</span> {{ ataque.text }}</li>
-                <li><span class="li-title">Custo mana:</span> {{ ataque.convertedEnergyCost }}</li>
+                <li class="topo-desc"><span class="li-title">Descrição:</span> {{ ataque.text }} <span *ngIf="!ataque.text">Não contem descrição</span></li>
+                <li class="topo-desc"><span class="li-title">Custo mana:</span>
+                    R$ {{ ataque.convertedEnergyCost | currency:'BRL':2 }}</li>
             </ul>
         </div>
     </div>
