@@ -1,6 +1,6 @@
 .top-m{
    
-    background: #378fe7;
+    background: rgb(63, 62, 62);
     color: #fff;
     
 }
@@ -8,6 +8,24 @@
     color:#fff;
 }
 .title{
-    padding: 12px!important;
-    text-indent: 20px;
+    display: block;
+    width: 100%;
+    
+}
+
+.ul-estilo {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.titulo-lista{
+    margin-top: 6px;
+    width: 100%;
+    display: block;
+    font-weight: 600;
+}
+
+.li-title{
+    font-weight: 600;
 }

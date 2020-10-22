@@ -43,18 +43,24 @@ export class ListaPokemonComponent implements OnInit {
   }
 
   detalhe(id) {
-    
    this.listDetalhe(id);
   }
 
   listDetalhe(id) {
     this.pokemonService.detalhePokemon(id)
       .subscribe(res => {
-        this.bsModalRef = this.modalService.show(ModalDetalheComponent);
+        console.log(res)
+        this.bsModalRef = this.modalService.show(ModalDetalheComponent,  { class: 'gray modal-lg' });
         res['cards'].map(res => {
-          this.bsModalRef.content.title = res['name']
+          this.bsModalRef.content.name = res['name']
           this.bsModalRef.content.closeBtnName = 'Fechar';
           this.bsModalRef.content.imagem = res['imageUrlHiRes']; 
+          this.bsModalRef.content.id = res['id']; 
+          this.bsModalRef.content.resistances = res['resistances']; 
+          this.bsModalRef.content.weaknesses = res['weaknesses']; 
+          this.bsModalRef.content.attacks = res['attacks'];
+          
+          
           
         });
         console.log(res['cards'])

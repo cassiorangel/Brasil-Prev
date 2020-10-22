@@ -8,10 +8,13 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 })
 export class ModalDetalheComponent implements OnInit {
 
-  @Input() title: string;
-  @Input() item: string;
+  @Input() name: string;
+  @Input() id: string;
+  @Input() resistances;
   @Input() closeBtnName: string;
   @Input() imagem: string;
+  @Input() weaknesses;
+  @Input() attacks;
 
   constructor(
     public bsModalRef: BsModalRef
