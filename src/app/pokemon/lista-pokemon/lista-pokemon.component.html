@@ -1,1 +1,29 @@
-<p>lista-pokemon works!</p>
+
+<div class="row" style="margin-bottom: 20px;">
+  <div class="col-sm-3 topo" *ngFor="let pokemon of listPokemon">
+    <div class="card" style="width: 100%; min-height: 300px;">
+      <span>
+        <img
+          class="card-img-top"
+          src="{{ pokemon.imageUrl }}"
+          alt=""
+          style="width: 230px;height: 300px;margin: 0 auto;display: block;padding-top: 10px;"
+        />
+      </span>
+      <div class="card-body">
+        <div class="card-d">
+            <span class="card-text"><span class="linha">Nome: </span>{{ pokemon.name }}</span>
+
+            <span class="card-text">
+              <span class="linha">Id:</span> {{ pokemon.id }}
+            </span>
+  
+            <span class="card-text">
+              <span class="linha">Tipo:</span> {{ pokemon.types }}
+            </span>
+        </div>
+        <button class="btn btn-primary btn-sm bt">Detalhes</button>
+      </div>
+    </div>
+  </div>
+</div>

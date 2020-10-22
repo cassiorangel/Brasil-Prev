@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 
 import { PokemonRoutingModule } from './pokemon-routing.module';
 import { ListaPokemonComponent } from './lista-pokemon/lista-pokemon.component';
+import { BuscaPokemonComponent } from './busca-pokemon/busca-pokemon.component';
 
 
 @NgModule({
-  declarations: [ListaPokemonComponent],
+  declarations: [ListaPokemonComponent, BuscaPokemonComponent],
   imports: [
     CommonModule,
     PokemonRoutingModule

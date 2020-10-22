@@ -9,14 +9,19 @@ import { catchError } from 'rxjs/operators';
 })
 export class ListaPokemonComponent implements OnInit {
 
+  listPokemon: any[]
+
   constructor(
     private pokemonService: PokemonService
   ) { }
 
   ngOnInit(): void {
     this.pokemonService.getListPokemon()
-      .subscribe(res => console.log(res), 
+      .subscribe(res => {
+        this.listPokemon = res['cards']
+        console.log(this.listPokemon)}, 
         error => console.log(error.message))
   }
+  
 
 }
