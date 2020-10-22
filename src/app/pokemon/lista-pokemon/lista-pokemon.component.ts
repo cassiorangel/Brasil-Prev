@@ -19,8 +19,16 @@ export class ListaPokemonComponent implements OnInit {
     this.pokemonService.getListPokemon()
       .subscribe(res => {
         this.listPokemon = res['cards']
-        console.log(this.listPokemon)}, 
+        this.ordenaNome(this.listPokemon);
+      
+      }, 
         error => console.log(error.message))
+  }
+  
+  ordenaNome(dadosArray) {
+    return dadosArray.sort((a, b) => {
+      return a.name < b.name ? -1 : a.name > b.name ? 1 : 0;
+    });
   }
   
 
