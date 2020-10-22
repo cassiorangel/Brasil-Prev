@@ -29,11 +29,10 @@ export class ListaPokemonComponent implements OnInit {
   }
 
   getPokemon() {
-    return this.listaIncricao = this.pokemonService.getListPokemon()
+    this.listaIncricao = this.pokemonService.getListPokemon()
       .subscribe(res => {
         this.listPokemon = res['cards']
         this.ordenaNome(this.listPokemon);
-
       },
         error => console.log(error.message))
   }
@@ -69,8 +68,13 @@ export class ListaPokemonComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
+    if(this.listaIncricao) {
     this.listaIncricao.unsubscribe();
-    this.dadosModal.unsubscribe();
+  
+    }
+    if(this.dadosModal) {
+      this.dadosModal.unsubscribe();
+    }
   }
 
 }

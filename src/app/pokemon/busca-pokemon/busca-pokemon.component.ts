@@ -50,7 +50,9 @@ export class BuscaPokemonComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
-    this.dadosIncricao.unsubscribe();
+    if(this.dadosIncricao) {
+      this.dadosIncricao.unsubscribe();
+    }
   }
 
 }

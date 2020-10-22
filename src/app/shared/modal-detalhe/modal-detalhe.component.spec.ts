@@ -1,3 +1,4 @@
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 
@@ -10,6 +11,7 @@ describe('ModalDetalheComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ ModalDetalheComponent ],
+      schemas: [NO_ERRORS_SCHEMA],
       providers: [
         BsModalRef
       ]
